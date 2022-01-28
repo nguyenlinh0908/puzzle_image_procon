@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <title>Puzzle</title>
+    <style>
+      img {
+        border: 1px;
+        border-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/vendor/jquery.min.js"></script>
+    <div class="container-fluid my-3">
+      <div class="row mx-3">
+        <div class="col-3">
+          <div class="card" style="width: 18rem">
+            <img class="card-img-top" src="/public/robot.jpg" alt="avatar" />
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"></li>
+            </ul>
+            <div class="card-body">
+              <button data-round="" class="btn btn-primary w-100">
+                Get Matches
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="image-group container-fluid"></div>
+        </div>
+        <div class="col-3">
+          <form>
+            <div class="row">
+              <div class="col">
+                <label for="rowNum">Row number</label>
+                <input id="rowNum" type="text" class="form-control" disabled />
+              </div>
+              <div class="col">
+                <label for="colNum">Column number</label>
+                <input id="colNum" type="text" class="form-control" disabled />
+              </div>
+            </div>
+            <div class="row py-3">
+              <div class="col">
+                <label for="stepNum">Step number</label>
+                <input id="stepNum" type="text" class="form-control" disabled />
+              </div>
+              <div class="col">
+                <label for="pickVal">Pick value</label>
+                <input id="pickVal" type="text" class="form-control" disabled />
+              </div>
+              <div class="col">
+                <label for="swapVal">Swap value</label>
+                <input id="swapVal" type="text" class="form-control" disabled />
+              </div>
+            </div>
+            <div class="row py-3">
+              <div class="col">
+                <label for="widthVal">Width</label>
+                <input
+                  id="widthVal"
+                  type="text"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+              <div class="col">
+                <label for="heightVal">Height</label>
+                <input
+                  id="heightVal"
+                  type="text"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+              <div class="col">
+                <label for="pixelVal">Pixel value</label>
+                <input
+                  id="pixelVal"
+                  type="text"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="row">
+              <button
+                type="button"
+                data-value=""
+                class="btn btn-outline-success"
+              >
+                Get Images
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/public/app.js"></script>
+  </body>
+</html>
