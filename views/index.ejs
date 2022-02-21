@@ -11,6 +11,10 @@
         border: 1px;
         border-color: red;
       }
+      .item {
+        width: -moz-fit-content;
+        width: fit-content;
+      }
     </style>
   </head>
   <body>
@@ -19,90 +23,183 @@
     <div class="container-fluid my-3">
       <div class="row mx-3">
         <div class="col-3">
-          <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="/public/robot.jpg" alt="avatar" />
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text"></p>
+          <div class="row">
+            <div class="card" style="width: 18rem">
+              <img class="card-img-top" src="/public/robot.jpg" alt="avatar" />
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"></li>
+              </ul>
+              <div class="card-body">
+                <button data-round="" class="btn btn-primary w-100">
+                  Get Matches
+                </button>
+              </div>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"></li>
-            </ul>
-            <div class="card-body">
-              <button data-round="" class="btn btn-primary w-100">
-                Get Matches
-              </button>
-            </div>
+          </div>
+          <div class="row">
+            <span class="item"
+              ><b>Swivel Angle:</b> chỉ định góc xoay từng mảnh ảnh với với thứ
+              tự từ trái qua phải từ trên xuống dưới</span
+            >
+            <br />
+            <span class="item"><b>Number of picks:</b> số lần chọn</span> <br />
+            <span class="item"
+              ><b>Moves:</b>
+              <ul>
+                <li>Dòng số 1 ghi lại tọa độ của các mảnh lựa chọn</li>
+                <li>Dòng số 2 ghi lại số lần hoán đổi</li>
+                <li>
+                  Dòng số 3 ghi lại thao tác hoán đổi lần lượt theo thứ tự từ
+                  hoán đổi thứ nhất (Một thao tác hoán đổi sẽ chỉ ra vị trí
+                  tương đối giữa mảnh được chọn và mảnh hoán đổi dưới dạng
+                  U-D-R-L (trên, dưới, phải, trái))
+                </li>
+              </ul>
+            </span>
           </div>
         </div>
         <div class="col-6">
           <div class="image-group container-fluid"></div>
         </div>
         <div class="col-3">
-          <form>
-            <div class="row">
-              <div class="col">
-                <label for="rowNum">Row number</label>
-                <input id="rowNum" type="text" class="form-control" disabled />
-              </div>
-              <div class="col">
-                <label for="colNum">Column number</label>
-                <input id="colNum" type="text" class="form-control" disabled />
-              </div>
+          <div class="row">
+            <div class="col">
+              <form>
+                <div class="row">
+                  <div class="col">
+                    <label for="rowNum">Row number</label>
+                    <input
+                      id="rowNum"
+                      type="text"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="colNum">Column number</label>
+                    <input
+                      id="colNum"
+                      type="text"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div class="row py-3">
+                  <div class="col">
+                    <label for="stepNum">Step number</label>
+                    <input
+                      id="stepNum"
+                      type="text"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="pickVal">Pick value</label>
+                    <input
+                      id="pickVal"
+                      type="text"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="swapVal">Swap value</label>
+                    <input
+                      id="swapVal"
+                      type="text"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div class="row py-3">
+                  <div class="col">
+                    <label for="widthVal">Width</label>
+                    <input
+                      id="widthVal"
+                      type="text"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="heightVal">Height</label>
+                    <input
+                      id="heightVal"
+                      type="text"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="pixelVal">Pixel value</label>
+                    <input
+                      id="pixelVal"
+                      type="text"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <button
+                    type="button"
+                    data-value=""
+                    class="btn btn-outline-success"
+                  >
+                    Get Images
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="row py-3">
-              <div class="col">
-                <label for="stepNum">Step number</label>
-                <input id="stepNum" type="text" class="form-control" disabled />
-              </div>
-              <div class="col">
-                <label for="pickVal">Pick value</label>
-                <input id="pickVal" type="text" class="form-control" disabled />
-              </div>
-              <div class="col">
-                <label for="swapVal">Swap value</label>
-                <input id="swapVal" type="text" class="form-control" disabled />
-              </div>
+          </div>
+          <div class="row pt-3">
+            <div class="col">
+              <h5 class="text-center">Solution</h5>
+              <form>
+                <div class="row">
+                  <div class="col">
+                    <label for="rowNum">Swivel Angle</label>
+                    <input id="swivelAngle" type="text" class="form-control" />
+                  </div>
+                  <div class="col">
+                    <label for="colNum">Number of picks</label>
+                    <input
+                      id="NumberOfPicks"
+                      type="text"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="row py-3">
+                  <div class="col">
+                    <label for="stepNum">Moves</label>
+                    <textarea
+                      class="form-control"
+                      id="moves"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <button
+                    type="button"
+                    data-value=""
+                    class="btn btn-outline-info"
+                    id="submitMoves"
+                  >
+                    Moves
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="row py-3">
-              <div class="col">
-                <label for="widthVal">Width</label>
-                <input
-                  id="widthVal"
-                  type="text"
-                  class="form-control"
-                  disabled
-                />
-              </div>
-              <div class="col">
-                <label for="heightVal">Height</label>
-                <input
-                  id="heightVal"
-                  type="text"
-                  class="form-control"
-                  disabled
-                />
-              </div>
-              <div class="col">
-                <label for="pixelVal">Pixel value</label>
-                <input
-                  id="pixelVal"
-                  type="text"
-                  class="form-control"
-                  disabled
-                />
-              </div>
-            </div>
-            <div class="row">
-              <button
-                type="button"
-                data-value=""
-                class="btn btn-outline-success"
-              >
-                Get Images
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

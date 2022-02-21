@@ -1,6 +1,7 @@
 $(document).ready((e) => {
   tournament();
   getMatches();
+  submitChallenge();
 });
 const tournament = () => {
   fetch("/tournament")
@@ -32,7 +33,6 @@ const tournamentWithID = (idTournament) => {
         .attr("data-round", currentRound["id"]);
     });
 };
-
 const matchOfRound = (idRound) => {
   fetch("/match", {
     method: "POST",
@@ -124,6 +124,23 @@ const imagesOfChallenge = (challengeID) => {
         for (let i = 0; i < imagesGroup.length; ++i) {
           $(imagesGroup[i]).attr("src", `data:image/png;base64, ${images[i]}`);
         }
+      });
+  });
+};
+const submitChallenge = () => {
+  $("#submitMoves").on("click",(e) => {
+    e.preventDefault();
+    fetch("/submit/challenge", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
       });
   });
 };

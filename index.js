@@ -26,27 +26,3 @@ const start = async () => {
   }
 };
 start();
-
-// instance.get("/tournament").then((response) => {
-//   const info = response.data[0];
-//   console.log(info);
-// });
-
-// info round fight
-// instance.get(`/tournament/${9}`).then((response) => {
-//   console.log(response.data);
-// });
-
-// instance.get(`/round/${11}`).then((response) => {
-//   console.log(response.data);
-// });
-// instance.get(`/match/${17}`).then((response) => {
-//   console.log(response.data);
-// });
-
-// instance.get(`/challenge/raw/${13}`).then((response) => {
-//   console.log(response.data);
-// });
-// instance.get(`/challenge/image/${13}`).then((response) => {
-//   console.log(response.data);
-// });
