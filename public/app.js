@@ -1,3 +1,5 @@
+// const { size } = require("lodash");
+
 $(document).ready((e) => {
   tournament();
   getMatches();
@@ -90,7 +92,9 @@ const challengesInfo = (challengeID) => {
       const sizeGroupGroup = challengeArr[4].split(" ");
       const pixelSize = challengeArr[5];
       $(".btn-outline-success").attr("data-value", challengeID);
-      imagesOfChallenge(challengeID);
+      let shape = { row: piecesGroup[1], col: piecesGroup[2] };
+      let size = { height: sizeGroupGroup[1], width: sizeGroupGroup[2] };
+      imagesOfChallenge(challengeID, shape, size);
 
       $("#rowNum").val(piecesGroup[1]);
       $("#colNum").val(piecesGroup[2]);
@@ -106,7 +110,7 @@ const challengesInfo = (challengeID) => {
       $(".image-group").html(imageGridContent);
     });
 };
-const imagesOfChallenge = (challengeID) => {
+const imagesOfChallenge = (challengeID, shape, size) => {
   $(".btn-outline-success").on("click", (e) => {
     e.preventDefault();
     fetch("/image", {
@@ -115,7 +119,7 @@ const imagesOfChallenge = (challengeID) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: challengeID }),
+      body: JSON.stringify({ id: challengeID, shape: shape, size: size }),
     })
       .then((res) => res.json())
       .then((res) => {
@@ -128,8 +132,9 @@ const imagesOfChallenge = (challengeID) => {
   });
 };
 const submitChallenge = () => {
-  $("#submitMoves").on("click",(e) => {
+  $("#submitMoves").on("click", (e) => {
     e.preventDefault();
+    console.log("clicked");
     fetch("/submit/challenge", {
       method: "POST",
       headers: {
