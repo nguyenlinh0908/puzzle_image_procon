@@ -92,6 +92,7 @@ const challengesInfo = (challengeID) => {
       const sizeGroupGroup = challengeArr[4].split(" ");
       const pixelSize = challengeArr[5];
       $(".btn-outline-success").attr("data-value", challengeID);
+      $(".btn-outline-info").attr("data-challenge", challengeID);
       let shape = { row: piecesGroup[1], col: piecesGroup[2] };
       let size = { height: sizeGroupGroup[1], width: sizeGroupGroup[2] };
       imagesOfChallenge(challengeID, shape, size);
@@ -134,19 +135,29 @@ const imagesOfChallenge = (challengeID, shape, size) => {
 const submitChallenge = () => {
   $("#submitMoves").on("click", (e) => {
     e.preventDefault();
-    console.log("clicked");
-    fetch("/submit/challenge", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-      });
+    let idChallenge = $(e.currentTarget).data("challenge");
+    let submitContent = $("#contentSubmit").val();
+    console.log(idChallenge);
+    console.log(submitContent);
+    if (idChallenge != "" && submitContent != "") {
+      fetch("/submit/challenge", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: 1,
+          moves: "000000000\n1\n11\n1\nD",
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+        });
+    } else {
+      
+    }
   });
 };
 function imageGrid(row, col) {

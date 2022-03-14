@@ -1,0 +1,28 @@
+<html>
+<head>
+
+</head>
+<body>
+<canvas id="c"/>
+</body>
+<script>
+function rotateBase64Image(base64data, callback) {
+    var canvas = document.getElementById("c");
+    var ctx = canvas.getContext("2d");
+
+    var image = new Image();
+    image.src = base64data;
+    image.onload = function() {
+        ctx.translate(image.width, image.height);
+        ctx.rotate(180 * Math.PI / 180);
+        ctx.drawImage(image, 0, 0); 
+        window.eval(""+callback+"('"+canvas.toDataURL()+"')");
+    };
+
+}
+rotateBase64Image("data:image/png;base64,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", 'callback');
+function callback(base64data) {
+    console.log(base64data);
+}
+</script>
+</html>

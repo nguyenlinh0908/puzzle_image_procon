@@ -33,7 +33,7 @@ const imageOfChallenge = (req, res) => {
   const { id, shape, size } = req.body;
   instance.get(`/challenge/image/${id}`).then((response) => {
     const images = response.data;
-    findSolve(images, shape, size);
+    // findSolve(images, shape, size);
     res.status(200).json({ images: images });
   });
 };
@@ -52,6 +52,23 @@ const findSolve = (images, shape, size) => {
     console.log(results);
   });
 };
+const submitChallenge = (req, res) => {
+  const { id, moves } = req.body;
+  // axios
+  //   .post(`http://112.137.129.202:8004/solution/submit/${id}`, moves, {
+  //     headers: {
+  //       Authorization: "Bearer " + process.env.TOKEN,
+  //       "Content-Type": "text/plain",
+  //     },
+  //   })
+  //   .then((response) => {
+  //     console.log(response);
+  //     res.status(200).json({ status: response.data });
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+};
 const challengeInfo = (req, res) => {
   const { id } = req.body;
   instance.get(`/challenge/raw/${id}`).then((response) => {
@@ -65,4 +82,5 @@ module.exports = {
   getInfoTournamentWithId,
   getMatchOfRound,
   challengeInfo,
+  submitChallenge,
 };
