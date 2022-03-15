@@ -37,14 +37,16 @@ const imageOfChallenge = (req, res) => {
     res.status(200).json({ images: images });
   });
 };
-const findSolve = (images, shape, size) => {
+const findSolve = (req, res) => {
+  // const findSolve = (images, shape, size) => {
+  const {images} = req.body
   const options = {
     mode: "json",
     pythonPath: "/usr/bin/python3.8",
     pythonOptions: ["-u"],
     // make sure you use an absolute path for scriptPath
     scriptPath: "/home/nguyenling/procon/puzzle_man/image_puzzle/",
-    args: [JSON.stringify(images), JSON.stringify(shape), JSON.stringify(size)],
+    args: images,
   };
   PythonShell.run("main.py", options, function (err, results) {
     if (err) throw err;
@@ -83,4 +85,5 @@ module.exports = {
   getMatchOfRound,
   challengeInfo,
   submitChallenge,
+  findSolve
 };

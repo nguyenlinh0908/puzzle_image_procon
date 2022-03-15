@@ -7,7 +7,8 @@ const {
   getInfoTournamentWithId,
   getMatchOfRound,
   challengeInfo,
-  submitChallenge
+  submitChallenge,
+  findSolve
 } = require("../controllers/main");
 router.route("/").get(index);
 router.post("/image", imageOfChallenge);
@@ -18,4 +19,5 @@ router
 router.post("/match", getMatchOfRound);
 router.post("/challenge", challengeInfo);
 router.post("/submit/challenge",submitChallenge);
+router.post("/solver", findSolve)
 module.exports = router;
