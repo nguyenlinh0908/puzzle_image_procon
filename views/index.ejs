@@ -15,9 +15,9 @@
         width: -moz-fit-content;
         width: fit-content;
       }
-    </style>
+      </style>
   </head>
-  <body>
+  <body onload="loadImages();">
     <script src="/public/js/bootstrap.min.js"></script>
     <script src="/vendor/jquery.min.js"></script>
     <div class="container-fluid my-3">
@@ -64,6 +64,15 @@
         </div>
         <div class="col-6">
           <div class="image-group container-fluid"></div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6" id="degreerotate">
+                <button class="btn btn-primary mb-3" type="button" value="90" style="width: 65px;">90 &ordm;</button>
+                <button class="btn btn-primary mb-3" type="button" value="180">180 &ordm;</button>
+                <button class="btn btn-primary mb-3" type="button" value="270">270 &ordm;</button>
+             </div>
+            </div>
+          </div>
         </div>
         <div class="col-3">
           <div class="row">

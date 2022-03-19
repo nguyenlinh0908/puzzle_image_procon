@@ -1,12 +1,29 @@
 // const { size } = require("lodash");
 
 $(document).ready((e) => {
-   let imageGridContent = imageGrid(3, 3);
-   $(".image-group").html(imageGridContent);
-   imagesOfChallenge(1, {row: 3, col: 3}, {height: 512, width: 512});
-  // tournament();
-  // getMatches();
-  // submitChallenge();
+    
+    let img;
+
+    $(document).on('click', '.image-group .row .col .piece', function(e) {
+        img = $(this);
+    });
+
+    $("#degreerotate button").click(function() {
+        let Data = img[0].classList;
+        let transform_number = parseInt(Data[Data.length - 1], 10);
+        let degree = parseInt($(this).val(), 10) + transform_number;
+        img[0].classList.replace(Data[Data.length - 1], `${degree}`);
+
+        img.attr("style", "transform: rotate(" + degree + "deg)");
+    }); 
+
+    
+    let imageGridContent = imageGrid(3, 3);
+    $(".image-group").html(imageGridContent);
+    imagesOfChallenge(1, {row: 3, col: 3}, {height: 512, width: 512});
+    // tournament();
+    // getMatches();
+    // submitChallenge();
 });
 const tournament = () => {
   fetch("/tournament")
@@ -121,6 +138,8 @@ const imagesOfChallenge = (challengeID, shape, size) => {
     const images = images_();
     for (let i = 0; i < imagesGroup.length; ++i) {
       $(imagesGroup[i]).attr("src", `data:image/png;base64, ${images[i]}`);
+      const classes = $(imagesGroup[i])[0].classList; //(*)
+      classes.add(0);;
     }
     // fetch("/image", {
     //   method: "POST",
@@ -175,7 +194,7 @@ function imageGrid(row, col) {
     content += '<div class="row pb-3">';
     for (let j = 0; j < cols; ++j) {
       content +=
-        '<div class="col"><img class="w-100 piece" src="/public/robot.jpg" alt="piece"></div>';
+         '<div class="col"><img class="w-100 piece" src="/public/robot.jpg" alt="piece"></div>';
     }
     content += "</div>";
   }
